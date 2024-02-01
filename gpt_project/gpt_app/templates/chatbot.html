@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .chat-messages {
+            padding: 15px;
+            overflow-y: scroll;
+            max-height: 300px;
+        }
+
+        .user-message, .bot-message {
+            margin: 10px 0;
+        }
+
+        .user-message {
+            text-align: right;
+            color: #333;
+        }
+
+        .bot-message {
+            text-align: left;
+            color: #007bff;
+        }
+
+        .chat-input {
+            width: calc(100% - 30px);
+            padding: 10px;
+            margin: 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .send-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">ChatGPT Chatbot</div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Chat messages will appear here -->
+        </div>
+        <input type="text" id="user-input" class="chat-input" placeholder="Type your message...">
+        <button onclick="sendMessage()" class="send-button">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById('user-input').value;
+            appendUserMessage(userInput);
+
+            // Send user input to Django view using AJAX or any other method
+            // Update the URL to the endpoint where you handle the chatbot logic in Django
+            var url = '/your-chatbot-endpoint/';
+            var data = { 'user_input': userInput };
+
+            // Example using Fetch API
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                appendBotMessage(data.bot_response);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        function appendUserMessage(message) {
+            var chatMessages = document.getElementById('chat-messages');
+            var userMessage = document.createElement('div');
+            userMessage.className = 'user-message';
+            userMessage.textContent = message;
+            chatMessages.appendChild(userMessage);
+        }
+
+        function appendBotMessage(message) {
+            var chatMessages = document.getElementById('chat-messages');
+            var botMessage = document.createElement('div');
+            botMessage.className = 'bot-message';
+            botMessage.textContent = message;
+            chatMessages.appendChild(botMessage);
+        }
+    </script>
+</body>
+</html>

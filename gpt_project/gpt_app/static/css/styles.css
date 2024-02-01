@@ -1,0 +1,40 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    background-color: #1877f2; /* Facebook blue */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-color: #fff;
+}
+
+.jumbotron {
+    background-color: #f6f7f9; /* Light grey background */
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #dddfe2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #1877f2; /* Facebook blue */
+    border-color: #1877f2;
+}
+
+.btn-primary:hover {
+    background-color: #1463c0; /* Darker shade on hover */
+    border-color: #1463c0;
+}

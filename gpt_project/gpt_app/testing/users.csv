@@ -1,0 +1,4 @@
+username,email,password,is_staff
+admin2,admin2@example.com,adminpassword,True
+user1,user1@example.com,userpassword,False
+user2,user2@example.com,userpassword,False

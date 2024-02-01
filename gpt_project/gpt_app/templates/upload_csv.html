@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CSV</title>
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f4f8ff; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddfe2;
+            border-radius: 5px;
+        }
+
+        .upload-btn {
+            background-color: #4e8af5; /* Light blue button */
+            border: 1px solid #4e8af5;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .upload-btn:hover {
+            background-color: #3a6db8; /* Darker shade on hover */
+            border: 1px solid #3a6db8;
+        }
+
+        .errors {
+            color: #dc3545; /* Bootstrap danger color */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2 style="text-align: center;">Upload CSV</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="csv_file">Choose CSV file:</label>
+                <input type="file" class="form-control" name="csv_file" accept=".csv" required>
+            </div>
+            <button type="submit" class="btn btn-primary upload-btn">Upload CSV</button>
+        </form>
+        {% if error_message %}
+            <div class="errors mt-3">
+                {{ error_message }}
+            </div>
+        {% endif %}
+        {% if success_message %}
+            <div class="success-message mt-3">
+                {{ success_message }}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

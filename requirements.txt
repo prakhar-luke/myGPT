@@ -1,1 +1,5 @@
-django
+assemblyai==0.19.0
+Django==5.0.1
+langchain==0.1.5
+python-dotenv==1.0.1
+zep_python==1.5.0

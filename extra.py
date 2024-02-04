@@ -11,7 +11,6 @@ from zep_python import ZepClient
 from zep_python.memory.models import Session, Memory,Message
 from zep_python.user.models import CreateUserRequest
 from langchain.chains import ConversationChain
-import assemblyai as aai
 from langchain.chat_models import ChatOpenAI
 import re
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
